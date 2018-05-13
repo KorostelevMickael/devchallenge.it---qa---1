@@ -1,0 +1,974 @@
+{
+	"info": {
+		"_postman_id": "156c6968-8c15-4286-9595-81a568c7917e",
+		"name": "devchallenge.it - qa - 1",
+		"description": "Devchallenge.it - qa - 1\nRound 1\n1. Go to http://petstore.swagger.io/\n2. Add a new Pet and check if your Pet was added\n3. Change the name of your Pet and check if the name was changed\n4. Delete your Pet from the list and check if the Pet was deleted\n5. Explore the application via requests! Create a negative test, test whatever you want from ‘/pet’\nFor example: find Pets, upload images, try to find a Pet that does not exist, etc.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MAIN TESTS",
+			"description": "Test`s from 2-4 of Main Part",
+			"item": [
+				{
+					"name": "ADD PET",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 9874,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK that pet was added",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/9874",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9874"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE name of pet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 9874,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"SHmulik\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK that pet`s name was changed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/9874",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9874"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE pet",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "special-key"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/9874",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9874"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK that pet was deleted",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/9874",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"9874"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NEGATIVE TESTS",
+			"description": "Test for part 5 of Main Part",
+			"item": [
+				{
+					"name": "Updating information about deleted pet",
+					"description": "Changing name of deleted pet",
+					"item": [
+						{
+							"name": "ADD PET",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api_key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 12345,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Fighters\"\r\n  },\r\n  \"name\": \"Zhylik\",\r\n  \"photoUrls\": [\r\n    \"https://vk.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"MMA\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet"
+									]
+								},
+								"description": "Adding new pet"
+							},
+							"response": []
+						},
+						{
+							"name": "CHECK that pet was added",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api_key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/12345",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"12345"
+									]
+								},
+								"description": "Checking that pet was created"
+							},
+							"response": []
+						},
+						{
+							"name": "DELETE pet",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "api-key",
+										"value": "special-key"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/12345",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"12345"
+									]
+								},
+								"description": "Deleting pet"
+							},
+							"response": []
+						},
+						{
+							"name": "CHECK that pet was deleted",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api_key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/12345",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"12345"
+									]
+								},
+								"description": "Checking that pet was deleted"
+							},
+							"response": []
+						},
+						{
+							"name": "CHANGE name of pet wich was deleted",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api-key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 12345,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Fighters\"\r\n  },\r\n  \"name\": \"Vasya\",\r\n  \"photoUrls\": [\r\n    \"https://vk.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"MMA\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet"
+									]
+								},
+								"description": "Pet was deleted, trying to update information about it"
+							},
+							"response": []
+						},
+						{
+							"name": "CHECK that pet doesn`t exist (pet was deleted)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api_key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/12345",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"12345"
+									]
+								},
+								"description": "Checking information that name of deleted pet was changed"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "ID value is string insted of integer",
+					"description": "Creating pet with id parameter value in a wrong format",
+					"item": [
+						{
+							"name": "ADD PET",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api_key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"QAZ\",\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Street\"\r\n  },\r\n  \"name\": \"Barsik\",\r\n  \"photoUrls\": [\r\n    \"https://facebook.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"Budka\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet"
+									]
+								},
+								"description": "Adding new pet with wrong ID format"
+							},
+							"response": []
+						},
+						{
+							"name": "Check that pet wasn`t added",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "api_key",
+										"value": "special-key"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": \"QAZ\",\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Street\"\r\n  },\r\n  \"name\": \"Barsik\",\r\n  \"photoUrls\": [\r\n    \"https://facebook.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"Budka\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+								},
+								"url": {
+									"raw": "http://petstore.swagger.io/v2/pet/QAZ",
+									"protocol": "http",
+									"host": [
+										"petstore",
+										"swagger",
+										"io"
+									],
+									"path": [
+										"v2",
+										"pet",
+										"QAZ"
+									]
+								},
+								"description": "Checking that adding new record pet with wrong ID format wasn`t created"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		},
+		{
+			"name": "TEST STATUS",
+			"description": "",
+			"item": [
+				{
+					"name": "ADD PET",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 123456,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Wsx\"\r\n  },\r\n  \"name\": \"Rex\",\r\n  \"photoUrls\": [\r\n    \"https://ok.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"Gaf\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						},
+						"description": "Adding new pet"
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK that pet was added",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/123456",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"123456"
+							]
+						},
+						"description": "Checking that pet was created"
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE status of pet",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api-key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 123456,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"Wsx\"\r\n  },\r\n  \"name\": \"Rex\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"Gaf\"\r\n    }\r\n  ],\r\n  \"status\": \"sold\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						},
+						"description": "Changing the status of pet from available to sold"
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK that status of pet was changed by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/123456",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"123456"
+							]
+						},
+						"description": "Checking that status of pet was changed"
+					},
+					"response": []
+				},
+				{
+					"name": "CHECK that status of pet was changed by Filter",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"XYZ\"\r\n  },\r\n  \"name\": \"Mafin\",\r\n  \"photoUrls\": [\r\n    \"https://google.com\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"mops\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/findByStatus?status=sold",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "sold"
+								}
+							]
+						},
+						"description": "Checking that status of pet was changed and it is displayed in the sold list"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BONUS",
+			"description": "Testing Store part",
+			"item": [
+				{
+					"name": "Get inventory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/store/inventory",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pet by filter available",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "special-key"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/pet/findByStatus?status=available",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"findByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "available"
+								}
+							]
+						},
+						"description": "Finding pet for purchase"
+					},
+					"response": []
+				},
+				{
+					"name": "Creating order to buy pet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "spacial-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12345,\r\n  \"petId\": 9205439794349956404,\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2018-05-13T11:34:35.728Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": false\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/store/order",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order"
+							]
+						},
+						"description": "Buying pet"
+					},
+					"response": []
+				},
+				{
+					"name": "Check that order to buy pet was created",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "spacial-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12345,\r\n  \"petId\": 9205439794349956404,\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2018-05-13T11:34:35.728Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": false\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/store/order/12345",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"12345"
+							]
+						},
+						"description": "Checking that order to buy pet was created"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order to buy pet",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "spacial-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12345,\r\n  \"petId\": 9205439794349956404,\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2018-05-13T11:34:35.728Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": false\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/store/order/12345",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"12345"
+							]
+						},
+						"description": "Deleting order to buy pet"
+					},
+					"response": []
+				},
+				{
+					"name": "Check that order to buy pet was deleted",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "spacial-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12345,\r\n  \"petId\": 9205439794349956404,\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2018-05-13T11:34:35.728Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": false\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/store/order/12345",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"12345"
+							]
+						},
+						"description": "Checking that order to buy pet was deleted"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order to buy pet that was deleted",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "api_key",
+								"value": "spacial-key"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 12345,\r\n  \"petId\": 9205439794349956404,\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2018-05-13T11:34:35.728Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": false\r\n}"
+						},
+						"url": {
+							"raw": "http://petstore.swagger.io/v2/store/order/12345",
+							"protocol": "http",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"store",
+								"order",
+								"12345"
+							]
+						},
+						"description": "Deleting order to buy pet that was deleted earlier"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
